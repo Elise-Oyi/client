@@ -1,13 +1,13 @@
-import ResetPasswordForm from "@/components/forms/ResetPasswordForm";
+import NewPasswordForm from "@/components/forms/NewPasswordForm";
 import Image from "next/image";
 
-export default function ResetPasswordPage() {
+export default function NewPasswordPage() {
   return (
     <div className="relative h-screen w-screen">
       {/* Fullscreen Background Image */}
       <Image
         src="/auth-bg.png"
-        alt="Reset password background"
+        alt="New password background"
         layout="fill"
         objectFit="cover"
         className="z-0"
@@ -23,7 +23,7 @@ export default function ResetPasswordPage() {
             height={80}
             className="mx-auto mb-6"
           />
-          <ResetPasswordForm />
+          <NewPasswordForm />
         </div>
       </div>
     </div>

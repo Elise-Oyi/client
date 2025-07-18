@@ -41,7 +41,7 @@ export default function LoginForm() {
         <input
           type="email"
           {...register("email", { required: true })}
-          className="mt-1 block w-full border px-3 py-1 rounded-lg shadow-md focus:outline-none focus:ring"
+          className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-500"
         />
         {errors.email && <span className="text-red-500 text-sm">Email is required</span>}
       </div>
@@ -51,12 +51,12 @@ export default function LoginForm() {
         <input
           type="password"
           {...register("password", { required: true })}
-          className="mt-1 block w-full border px-3 py-1 rounded-lg shadow-md focus:outline-none focus:ring"
+          className="mt-1 block w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-500"
         />
         {errors.password && <span className="text-red-500 text-sm">Password is required</span>}
       </div>
       <div className="text-blue-600 text-left">
-        <a>forgot password?</a>
+        <a href="/auth/reset-password" className="hover:underline cursor-pointer">forgot password?</a>
       </div>
 
       <button
