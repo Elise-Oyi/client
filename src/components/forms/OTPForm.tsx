@@ -4,35 +4,62 @@ import { useForm } from "react-hook-form";
 import { api } from "@/lib/api";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import toast from "react-hot-toast";
+import { useAuthStore } from "@/store/authStore";
 
 interface OTPFormProps {
   email?: string;
 }
 
 export default function OTPForm({ email }: OTPFormProps) {
+
+  const user = useAuthStore(s=>s.user)
+  const otp = useAuthStore(s => s.otp);
+    
   const { register, handleSubmit, formState: { errors } } = useForm();
+
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const onSubmit = async (data: any) => {
     setLoading(true);
+
+    console.log(user,"user")
+    
+    const loadingToast = toast.loading("Verifying OTP...");
+    if (!user) {
+      toast.error("Invalid or missing user details.");
+      setLoading(false);
+      return;
+    }
+    const token = user.verificationToken 
+    
     try {
-      const res = await api.post("/auth/verify-otp", { ...data, email });
-      alert("OTP verified successfully");
+      await otp(data);
+      
+      toast.dismiss(loadingToast);
+      toast.success("OTP verified successfully!");
+      
       router.push("/dashboard");
     } catch (err: any) {
-      alert(err.response?.data?.message || "OTP verification failed");
+      toast.dismiss(loadingToast);
+      toast.error(err.response?.data?.message || "OTP verification failed");
     } finally {
       setLoading(false);
     }
   };
 
   const handleResendOTP = async () => {
+    const loadingToast = toast.loading("Resending OTP...");
+    
     try {
-      await api.post("/auth/resend-otp", { email });
-      alert("OTP resent successfully");
+      await api.post("/resend-otp", { email });
+      
+      toast.dismiss(loadingToast);
+      toast.success("OTP resent successfully! Check your email.");
     } catch (err: any) {
-      alert(err.response?.data?.message || "Failed to resend OTP");
+      toast.dismiss(loadingToast);
+      toast.error(err.response?.data?.message || "Failed to resend OTP");
     }
   };
 
@@ -42,8 +69,12 @@ export default function OTPForm({ email }: OTPFormProps) {
         <h2 className="text-2xl font-bold text-black mb-2">OTP verification</h2>
         <p className="text-gray-600 text-sm">
           Enter the verification code we sent to your<br />
-          admin1234@gmail.com
+          {user?.email}
         </p>
+        {/* <p className="text-green-300 text-sm text-wrap font-medium">
+          Token<br />
+          {user?.verificationToken}
+        </p> */}
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -52,10 +83,10 @@ export default function OTPForm({ email }: OTPFormProps) {
           <input
             type="text"
             placeholder="12345"
-            {...register("code", { required: true })}
+            {...register("token", { required: true })}
             className="w-full border border-gray-300 px-3 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-500"
           />
-          {errors.code && <span className="text-red-500 text-sm">Code is required</span>}
+          {errors.token && <span className="text-red-500 text-sm">Token is required</span>}
         </div>
 
         <button

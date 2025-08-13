@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { api } from "@/lib/api";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 interface NewPasswordFormProps {
   token?: string;
@@ -18,19 +19,26 @@ export default function NewPasswordForm({ token }: NewPasswordFormProps) {
 
   const onSubmit = async (data: any) => {
     setLoading(true);
+    
+    const loadingToast = toast.loading("Updating password...");
+    
     try {
-      const res = await api.post("/auth/set-new-password", { ...data, token });
-      alert("Password reset successfully");
-      router.push("/auth/login");
+      await api.post("/set-new-password", { ...data, token });
+      
+      toast.dismiss(loadingToast);
+      toast.success("Password updated successfully! You can now login.");
+      
+      router.push("/login");
     } catch (err: any) {
-      alert(err.response?.data?.message || "Password reset failed");
+      toast.dismiss(loadingToast);
+      toast.error(err.response?.data?.message || "Password update failed");
     } finally {
       setLoading(false);
     }
   };
 
   const handleBackToLogin = () => {
-    router.push("/auth/login");
+    router.push("/login");
   };
 
   return (

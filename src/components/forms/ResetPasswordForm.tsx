@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { api } from "@/lib/api";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 export default function ResetPasswordForm() {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -12,19 +13,26 @@ export default function ResetPasswordForm() {
 
   const onSubmit = async (data: any) => {
     setLoading(true);
+    
+    const loadingToast = toast.loading("Sending reset email...");
+    
     try {
-      const res = await api.post("/auth/reset-password", data);
-      alert("Password reset email sent successfully");
-      router.push("/auth/login");
+      await api.post("/reset-password", data);
+      
+      toast.dismiss(loadingToast);
+      toast.success("Password reset email sent successfully! Check your inbox.");
+      
+      router.push("/login");
     } catch (err: any) {
-      alert(err.response?.data?.message || "Password reset failed");
+      toast.dismiss(loadingToast);
+      toast.error(err.response?.data?.message || "Password reset failed");
     } finally {
       setLoading(false);
     }
   };
 
   const handleBackToLogin = () => {
-    router.push("/auth/login");
+    router.push("/login");
   };
 
   return (

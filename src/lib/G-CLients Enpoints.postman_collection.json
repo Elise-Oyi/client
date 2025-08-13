@@ -1,0 +1,2241 @@
+{
+	"info": {
+		"_postman_id": "96ec2d7c-fb8a-4aa6-be0f-9f74463cd781",
+		"name": "G-CLients Enpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23193659"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\":\"Passum\",\n    \"lastName\":\"Tornado\",\n    \"email\":\"spprofi@sponscloud.tech\",\n    \"password\":\"@Pass123456\",\n    \"confirmPassword\": \"@Pass123456\",\n    \"contact\":\"+233241333224\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/signup/admin",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"signup",
+								"admin"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register Admin",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\":\"Passum\",\n    \"lastName\":\"Tornado\",\n    \"email\":\"passumtornado10@gmail.com\",\n    \"password\":\"@Pass123456\",\n    \"confirmPassword\": \"@Pass123456\",\n    \"contact\":\"+233241333224\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/auth/signup/admin",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"auth",
+										"signup",
+										"admin"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "token={{vault:json-web-token}}; Max-Age=604800; Path=/; Expires=Sun, 20 Apr 2025 11:32:50 GMT; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "652"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"28c-kNHMroJL+b6CoWAhBXCrtww9RQY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 13 Apr 2025 11:32:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Admin created successfully\",\n    \"token\": \"{{vault:json-web-token}}\",\n    \"user\": {\n        \"firstName\": \"Passum\",\n        \"lastName\": \"Tornado\",\n        \"email\": \"passumtornado10@gmail.com\",\n        \"role\": \"Admin\",\n        \"contact\": \"+233241333224\",\n        \"isVerified\": false,\n        \"verificationToken\": \"144234\",\n        \"verificationTokenExpiresAt\": \"2025-04-13T11:47:49.969Z\",\n        \"_id\": \"67fba0e1910951086f152282\",\n        \"lastLogin\": \"2025-04-13T11:32:49.975Z\",\n        \"createdAt\": \"2025-04-13T11:32:49.979Z\",\n        \"updatedAt\": \"2025-04-13T11:32:49.979Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Register Learner",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\":\"Passum\",\n    \"lastName\":\"Tornado\",\n    \"email\":\"spprofi@adminzoom.com\",\n    \"password\":\"@Pass123456\",\n    \"confirmPassword\": \"@Pass123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/signup/learner",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"signup",
+								"learner"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"passumtornado10@gmail.com\",\n    \"password\":\"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/login",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"guevel@hearkn.com\",\n    \"password\": \"@Pass123456\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/auth/login",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "token={{vault:json-web-token}}; Max-Age=604800; Path=/; Expires=Fri, 18 Apr 2025 22:22:19 GMT; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "857"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"359-AUXM/HnUh4AaTNFokDIOEmBIPXY\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 11 Apr 2025 22:22:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Login successful\",\n    \"token\": \"{{vault:json-web-token}}\",\n    \"user\": {\n        \"_id\": \"67f792c7338e633d391bfe0a\",\n        \"firstName\": \"Passum\",\n        \"lastName\": \"Tornado\",\n        \"email\": \"guevel@hearkn.com\",\n        \"role\": \"Learner\",\n        \"isVerified\": true,\n        \"verificationToken\": \"694939\",\n        \"verificationTokenExpiresAt\": \"2025-04-11T09:43:35.819Z\",\n        \"lastLogin\": \"2025-04-11T22:22:19.882Z\",\n        \"createdAt\": \"2025-04-10T09:43:35.907Z\",\n        \"updatedAt\": \"2025-04-11T22:22:19.887Z\",\n        \"__v\": 0,\n        \"contact\": \"+233241333224\",\n        \"description\": \"This is the decription about me\",\n        \"disabled\": false,\n        \"location\": \"Accra, Ghana\",\n        \"profileImage\": \"https://res.cloudinary.com/techbiznez/image/upload/v1744381013/profileImage-1744380996754-425588999_hmpvxl.jpg\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Verify-Email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"144234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/verify-email",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"verify-email"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Verify-Email",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"token\":\"144234\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/auth/verify-email",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"auth",
+										"verify-email"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "360"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"168-7w4+xvzfVjYkVIp6Ds2KZs8/MSg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 13 Apr 2025 11:37:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Email verified successfully\",\n    \"user\": {\n        \"_id\": \"67fba0e1910951086f152282\",\n        \"firstName\": \"Passum\",\n        \"lastName\": \"Tornado\",\n        \"email\": \"passumtornado10@gmail.com\",\n        \"role\": \"Admin\",\n        \"contact\": \"+233241333224\",\n        \"isVerified\": true,\n        \"lastLogin\": \"2025-04-13T11:32:49.975Z\",\n        \"createdAt\": \"2025-04-13T11:32:49.979Z\",\n        \"updatedAt\": \"2025-04-13T11:37:50.290Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Resend Verification Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/resend-token",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"resend-token"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Resend Verification Token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/auth/resend-token",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"auth",
+										"resend-token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Apr 2025 12:49:18 GMT"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"34-durV5e7TxMeB8pq+Ocppu4gmsbE\""
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Verification email sent\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Forgot Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"teshu2124@gmail.com\",\n    \"baseResetURL\": \"https://www.postman.com/reset\" // https://www.postman.com/reset/token\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/forgot-password",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"@Pass123456\",\n    \"confirmPassword\": \"@Pass123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/reset-password/0e1b7212756c03c43c4867039272a652be01a67f",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"reset-password",
+								"0e1b7212756c03c43c4867039272a652be01a67f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"@Pass123456\",\n    \"confirmPassword\": \"@Pass123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/change-password",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://tmp-se-project.azurewebsites.net/api/admin/auth/logout",
+							"protocol": "https",
+							"host": [
+								"tmp-se-project",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"admin",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Auth",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\":\"Passum\",\n    \"last_name\":\"Tornado\",\n    \"email\":\"passumtornado10@gmail.com\",\n    \"password\":\"123456\",\n    \"contact\":\"0241333224\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/check-auth",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"check-auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User/Complete Profile",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "profileImage",
+									"type": "file",
+									"src": "/home/dammy-ola/Downloads/black-female-image-studing.jpg"
+								},
+								{
+									"key": "contact",
+									"value": "+233241333224",
+									"type": "text"
+								},
+								{
+									"key": "disabled",
+									"value": "false",
+									"description": "Accepts a boolean value. \"true\" or \"false\"",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "Accra, Ghana",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "This is the decription about me",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/update",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Courses",
+			"item": [
+				{
+					"name": "Create Course",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "AWS Cloud Practional ",
+									"type": "text"
+								},
+								{
+									"key": "track",
+									"value": "67fd04e1db1ad84c0687b468",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/dammy-ola/Downloads/black-female-image-studing.jpg"
+								},
+								{
+									"key": "description",
+									"value": "This is the course description",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/courses",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"courses"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Course",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "AWS Cloud Practional ",
+											"type": "text"
+										},
+										{
+											"key": "track",
+											"value": "67fd04e1db1ad84c0687b468",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/home/dammy-ola/Downloads/black-female-image-studing.jpg"
+										},
+										{
+											"key": "description",
+											"value": "This is the course description",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}/courses",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"courses"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "1331"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Apr 2025 12:53:40 GMT"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"533-bMO4xRBF92f6UBTopVHULURmIlo\""
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Course created successfully\",\n    \"course\": {\n        \"_id\": \"67fd0554db1ad84c0687b46d\",\n        \"admin\": {\n            \"_id\": \"67fce94ef40f9939839f2f09\",\n            \"firstName\": \"Passum\",\n            \"lastName\": \"Tornado\",\n            \"email\": \"harryhaller@hearourvoicetee.com\",\n            \"role\": \"Admin\",\n            \"contact\": \"+233241333224\",\n            \"isVerified\": true,\n            \"lastLogin\": \"2025-04-14T10:54:07.016Z\",\n            \"createdAt\": \"2025-04-14T10:54:07.036Z\",\n            \"updatedAt\": \"2025-04-14T12:50:07.951Z\",\n            \"__v\": 0\n        },\n        \"track\": {\n            \"_id\": \"67fd04e1db1ad84c0687b468\",\n            \"admin\": \"67fce94ef40f9939839f2f09\",\n            \"name\": \"Cloud Computing Expertise\",\n            \"price\": 350,\n            \"instructor\": \"John Doe\",\n            \"duration\": \"12 weeks\",\n            \"image\": \"https://res.cloudinary.com/techbiznez/image/upload/v1744635104/image-1744635104159-178583833_dzrteh.jpg\",\n            \"description\": \"Unlock your potential with comprehensive training in modern software development.Become a Full-Stack Web Developer with a single comprehensive course coveringHTML, CSS, JavaScript, Node, React, PostgreSQL, Web3, and DApps.\",\n            \"createdAt\": \"2025-04-14T12:51:45.213Z\",\n            \"updatedAt\": \"2025-04-14T12:51:45.213Z\",\n            \"__v\": 0,\n            \"id\": \"67fd04e1db1ad84c0687b468\"\n        },\n        \"title\": \"AWS Cloud Practional\",\n        \"image\": \"https://res.cloudinary.com/techbiznez/image/upload/v1744635219/image-1744635219198-566417259_euw2oc.jpg\",\n        \"description\": \"This is the course description\",\n        \"createdAt\": \"2025-04-14T12:53:40.138Z\",\n        \"updatedAt\": \"2025-04-14T12:53:40.138Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Course",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "AWS Cloud Practional Here",
+									"type": "text"
+								},
+								{
+									"key": "track",
+									"value": "67f82d152d80247a28fcc2d0",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/dammy-ola/code/nova-lms/public/images/person-2.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/courses/67f85311a3761b766ecff63e",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"courses",
+								"67f85311a3761b766ecff63e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get courses",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/courses",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Course",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"abdulgaffar.abuabakar@ntm.se\",\n    \"password\":\"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/courses/67f85311a3761b766ecff63e",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"courses",
+								"67f85311a3761b766ecff63e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Course",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/courses/67f85311a3761b766ecff63e",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"courses",
+								"67f85311a3761b766ecff63e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Learners",
+			"item": [
+				{
+					"name": "Update Learner",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "profileImage",
+									"type": "file",
+									"src": "/home/dammy-ola/Downloads/black-female-image-studing.jpg"
+								},
+								{
+									"key": "contact",
+									"value": "+233241333224",
+									"type": "text"
+								},
+								{
+									"key": "disabled",
+									"value": "false",
+									"description": "Accepts a boolean value. \"true\" or \"false\"",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "Accra, Ghana",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "This is the decription about me",
+									"type": "text"
+								},
+								{
+									"key": "firstName",
+									"value": "Dammy",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/learners/67fd05d1db1ad84c0687b473",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"learners",
+								"67fd05d1db1ad84c0687b473"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get learners",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/learners",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"learners"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Learner",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"abdulgaffar.abuabakar@ntm.se\",\n    \"password\":\"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/learners/67fd05d1db1ad84c0687b473",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"learners",
+								"67fd05d1db1ad84c0687b473"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Course",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/courses/67f85311a3761b766ecff63e",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"courses",
+								"67f85311a3761b766ecff63e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tracks",
+			"item": [
+				{
+					"name": "Create Track",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Cloud Computing Expertise",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "350",
+									"type": "text"
+								},
+								{
+									"key": "instructor",
+									"value": "John Doe",
+									"type": "text"
+								},
+								{
+									"key": "duration",
+									"value": "12 weeks",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Unlock your potential with comprehensive training in modern software development.Become a Full-Stack Web Developer with a single comprehensive course coveringHTML, CSS, JavaScript, Node, React, PostgreSQL, Web3, and DApps.",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/dammy-ola/Downloads/black-female-image-studing.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/tracks",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"tracks"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Track",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Cloud Computing Expertise",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "350",
+											"type": "text"
+										},
+										{
+											"key": "instructor",
+											"value": "John Doe",
+											"type": "text"
+										},
+										{
+											"key": "duration",
+											"value": "12 weeks",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Unlock your potential with comprehensive training in modern software development.Become a Full-Stack Web Developer with a single comprehensive course coveringHTML, CSS, JavaScript, Node, React, PostgreSQL, Web3, and DApps.",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/home/dammy-ola/Downloads/black-female-image-studing.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseURL}}/tracks",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"tracks"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "697"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 14 Apr 2025 12:51:45 GMT"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b9-KYZNKqdxd813QRdB50B0wsT2gvc\""
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Track created successfully\",\n    \"track\": {\n        \"admin\": \"67fce94ef40f9939839f2f09\",\n        \"name\": \"Cloud Computing Expertise\",\n        \"price\": 350,\n        \"instructor\": \"John Doe\",\n        \"duration\": \"12 weeks\",\n        \"image\": \"https://res.cloudinary.com/techbiznez/image/upload/v1744635104/image-1744635104159-178583833_dzrteh.jpg\",\n        \"description\": \"Unlock your potential with comprehensive training in modern software development.Become a Full-Stack Web Developer with a single comprehensive course coveringHTML, CSS, JavaScript, Node, React, PostgreSQL, Web3, and DApps.\",\n        \"_id\": \"67fd04e1db1ad84c0687b468\",\n        \"createdAt\": \"2025-04-14T12:51:45.213Z\",\n        \"updatedAt\": \"2025-04-14T12:51:45.213Z\",\n        \"__v\": 0,\n        \"id\": \"67fd04e1db1ad84c0687b468\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Tracks",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/tracks",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"tracks"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Tracks",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/tracks",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"tracks"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1978"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7ba-LRm6/ozi+mUBIDkfzyFMsQcNqiE\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 11 Apr 2025 19:12:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"count\": 1,\n    \"tracks\": [\n        {\n            \"_id\": \"67f82d152d80247a28fcc2d0\",\n            \"admin\": {\n                \"_id\": \"67f79566338e633d391bfe0d\",\n                \"firstName\": \"Passum\",\n                \"lastName\": \"Tornado\",\n                \"email\": \"spprofi@sponscloud.tech\",\n                \"role\": \"Admin\",\n                \"contact\": \"+233241333224\",\n                \"isVerified\": true,\n                \"lastLogin\": \"2025-04-10T10:13:08.619Z\",\n                \"createdAt\": \"2025-04-10T09:54:46.121Z\",\n                \"updatedAt\": \"2025-04-11T13:53:46.374Z\",\n                \"__v\": 0,\n                \"resetPasswordExpiresAt\": \"2025-04-10T14:52:30.240Z\",\n                \"resetPasswordToken\": \"973ec4fb767ea559a7812d4f6fdb0e396ff5d18c\",\n                \"description\": \"This is the decription about me\",\n                \"disabled\": false,\n                \"location\": \"Accra, Ghana\",\n                \"profileImage\": \"https://res.cloudinary.com/techbiznez/image/upload/v1744379626/profileImage-1744379608776-237376359_r3hv6n.jpg\"\n            },\n            \"name\": \"Cloud Computing Expertise Testing\",\n            \"price\": 350,\n            \"instructor\": \"John Doe\",\n            \"duration\": \"12 weeks\",\n            \"image\": \"https://res.cloudinary.com/techbiznez/image/upload/v1744331817/image-1744331798780-811237315_gnnbc7.jpg\",\n            \"description\": \"Unlock your potential with comprehensive training in modern software development.Become a Full-Stack Web Developer with a single comprehensive course coveringHTML, CSS, JavaScript, Node, React, PostgreSQL, Web3, and DApps.\",\n            \"createdAt\": \"2025-04-10T20:41:57.699Z\",\n            \"updatedAt\": \"2025-04-11T00:36:58.408Z\",\n            \"__v\": 0,\n            \"courses\": [\n                {\n                    \"_id\": \"67f85311a3761b766ecff63e\",\n                    \"admin\": \"67f79566338e633d391bfe0d\",\n                    \"track\": \"67f82d152d80247a28fcc2d0\",\n                    \"title\": \"AWS Cloud Practional Here\",\n                    \"stacks\": [\n                        \"s3\",\n                        \"ec2\",\n                        \"Cloudfront\",\n                        \"EKS\"\n                    ],\n                    \"image\": \"https://res.cloudinary.com/techbiznez/image/upload/v1744327439/image-1744327422641-727399288_aroigb.jpg\",\n                    \"createdAt\": \"2025-04-10T23:24:01.279Z\",\n                    \"updatedAt\": \"2025-04-11T11:25:37.252Z\",\n                    \"__v\": 0\n                }\n            ],\n            \"ratings\": [\n                {\n                    \"_id\": \"67f967fe6f26127c3d03f3f2\",\n                    \"learner\": \"67f792c7338e633d391bfe0a\",\n                    \"track\": \"67f82d152d80247a28fcc2d0\",\n                    \"rating\": 3,\n                    \"review\": \"Very nice track. Full of every course I needed to be a fullstack developer\",\n                    \"createdAt\": \"2025-04-11T19:05:34.480Z\",\n                    \"updatedAt\": \"2025-04-11T19:05:34.480Z\",\n                    \"__v\": 0\n                }\n            ],\n            \"id\": \"67f82d152d80247a28fcc2d0\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Single Track",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"abdulgaffar.abuabakar@ntm.se\",\n    \"password\":\"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/tracks/67f82d152d80247a28fcc2d0",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"tracks",
+								"67f82d152d80247a28fcc2d0"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Single Track",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"abdulgaffar.abuabakar@ntm.se\",\n    \"password\":\"123456\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/tracks/67f82d152d80247a28fcc2d0",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"tracks",
+										"67f82d152d80247a28fcc2d0"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1965"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7ad-sPFGIwGGagkwfgfuHGhgG7mp0vY\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 11 Apr 2025 19:11:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"track\": {\n        \"_id\": \"67f82d152d80247a28fcc2d0\",\n        \"admin\": {\n            \"_id\": \"67f79566338e633d391bfe0d\",\n            \"firstName\": \"Passum\",\n            \"lastName\": \"Tornado\",\n            \"email\": \"spprofi@sponscloud.tech\",\n            \"role\": \"Admin\",\n            \"contact\": \"+233241333224\",\n            \"isVerified\": true,\n            \"lastLogin\": \"2025-04-10T10:13:08.619Z\",\n            \"createdAt\": \"2025-04-10T09:54:46.121Z\",\n            \"updatedAt\": \"2025-04-11T13:53:46.374Z\",\n            \"__v\": 0,\n            \"resetPasswordExpiresAt\": \"2025-04-10T14:52:30.240Z\",\n            \"resetPasswordToken\": \"973ec4fb767ea559a7812d4f6fdb0e396ff5d18c\",\n            \"description\": \"This is the decription about me\",\n            \"disabled\": false,\n            \"location\": \"Accra, Ghana\",\n            \"profileImage\": \"https://res.cloudinary.com/techbiznez/image/upload/v1744379626/profileImage-1744379608776-237376359_r3hv6n.jpg\"\n        },\n        \"name\": \"Cloud Computing Expertise Testing\",\n        \"price\": 350,\n        \"instructor\": \"John Doe\",\n        \"duration\": \"12 weeks\",\n        \"image\": \"https://res.cloudinary.com/techbiznez/image/upload/v1744331817/image-1744331798780-811237315_gnnbc7.jpg\",\n        \"description\": \"Unlock your potential with comprehensive training in modern software development.Become a Full-Stack Web Developer with a single comprehensive course coveringHTML, CSS, JavaScript, Node, React, PostgreSQL, Web3, and DApps.\",\n        \"createdAt\": \"2025-04-10T20:41:57.699Z\",\n        \"updatedAt\": \"2025-04-11T00:36:58.408Z\",\n        \"__v\": 0,\n        \"courses\": [\n            {\n                \"_id\": \"67f85311a3761b766ecff63e\",\n                \"admin\": \"67f79566338e633d391bfe0d\",\n                \"track\": \"67f82d152d80247a28fcc2d0\",\n                \"title\": \"AWS Cloud Practional Here\",\n                \"stacks\": [\n                    \"s3\",\n                    \"ec2\",\n                    \"Cloudfront\",\n                    \"EKS\"\n                ],\n                \"image\": \"https://res.cloudinary.com/techbiznez/image/upload/v1744327439/image-1744327422641-727399288_aroigb.jpg\",\n                \"createdAt\": \"2025-04-10T23:24:01.279Z\",\n                \"updatedAt\": \"2025-04-11T11:25:37.252Z\",\n                \"__v\": 0\n            }\n        ],\n        \"ratings\": [\n            {\n                \"_id\": \"67f967fe6f26127c3d03f3f2\",\n                \"learner\": \"67f792c7338e633d391bfe0a\",\n                \"track\": \"67f82d152d80247a28fcc2d0\",\n                \"rating\": 3,\n                \"review\": \"Very nice track. Full of every course I needed to be a fullstack developer\",\n                \"createdAt\": \"2025-04-11T19:05:34.480Z\",\n                \"updatedAt\": \"2025-04-11T19:05:34.480Z\",\n                \"__v\": 0\n            }\n        ],\n        \"id\": \"67f82d152d80247a28fcc2d0\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Track",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Cloud Computing Expertise Testing",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "350",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "instructor",
+									"value": "John Doe",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "duration",
+									"value": "12 weeks",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "Unlock your potential with comprehensive training in modern software development.Become a Full-Stack Web Developer with a single comprehensive course coveringHTML, CSS, JavaScript, Node, React, PostgreSQL, Web3, and DApps.",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/dammy-ola/Downloads/black-female-image-studing.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/tracks/67f82d152d80247a28fcc2d0",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"tracks",
+								"67f82d152d80247a28fcc2d0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Track",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"abdulgaffar.abuabakar@ntm.se\",\n    \"password\":\"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/tracks/67f82d152d80247a28fcc2d0",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"tracks",
+								"67f82d152d80247a28fcc2d0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Track Ratings",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/tracks/67f82d152d80247a28fcc2d0/ratings",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"tracks",
+								"67f82d152d80247a28fcc2d0",
+								"ratings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rate Track",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"rating\": 3, // 1 - 5\n    \"review\": \"Very nice track. Full of every course I needed to be a fullstack developer\" // optional\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/tracks/67f82d152d80247a28fcc2d0/ratings",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"tracks",
+								"67f82d152d80247a28fcc2d0",
+								"ratings"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Rate Track",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"rating\": 3, // 1 - 5\n    \"review\": \"Very nice track. Full of every course I needed to be a fullstack developer\" // optional\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/tracks/67f82d152d80247a28fcc2d0/ratings",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"tracks",
+										"67f82d152d80247a28fcc2d0",
+										"ratings"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1539"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"603-C6JF9DnWzniay6VeiPg6OnYwv94\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 11 Apr 2025 19:05:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Track rated successfully\",\n    \"rating\": {\n        \"_id\": \"67f967fe6f26127c3d03f3f2\",\n        \"learner\": {\n            \"_id\": \"67f792c7338e633d391bfe0a\",\n            \"firstName\": \"Passum\",\n            \"lastName\": \"Tornado\",\n            \"email\": \"spprofi@adminzoom.com\",\n            \"role\": \"Learner\",\n            \"isVerified\": true,\n            \"verificationToken\": \"694939\",\n            \"verificationTokenExpiresAt\": \"2025-04-11T09:43:35.819Z\",\n            \"lastLogin\": \"2025-04-11T14:15:51.243Z\",\n            \"createdAt\": \"2025-04-10T09:43:35.907Z\",\n            \"updatedAt\": \"2025-04-11T14:16:54.389Z\",\n            \"__v\": 0,\n            \"contact\": \"+233241333224\",\n            \"description\": \"This is the decription about me\",\n            \"disabled\": false,\n            \"location\": \"Accra, Ghana\",\n            \"profileImage\": \"https://res.cloudinary.com/techbiznez/image/upload/v1744381013/profileImage-1744380996754-425588999_hmpvxl.jpg\"\n        },\n        \"track\": {\n            \"_id\": \"67f82d152d80247a28fcc2d0\",\n            \"admin\": \"67f79566338e633d391bfe0d\",\n            \"name\": \"Cloud Computing Expertise Testing\",\n            \"price\": 350,\n            \"instructor\": \"John Doe\",\n            \"duration\": \"12 weeks\",\n            \"image\": \"https://res.cloudinary.com/techbiznez/image/upload/v1744331817/image-1744331798780-811237315_gnnbc7.jpg\",\n            \"description\": \"Unlock your potential with comprehensive training in modern software development.Become a Full-Stack Web Developer with a single comprehensive course coveringHTML, CSS, JavaScript, Node, React, PostgreSQL, Web3, and DApps.\",\n            \"createdAt\": \"2025-04-10T20:41:57.699Z\",\n            \"updatedAt\": \"2025-04-11T00:36:58.408Z\",\n            \"__v\": 0,\n            \"id\": \"67f82d152d80247a28fcc2d0\"\n        },\n        \"rating\": 3,\n        \"review\": \"Very nice track. Full of every course I needed to be a fullstack developer\",\n        \"createdAt\": \"2025-04-11T19:05:34.480Z\",\n        \"updatedAt\": \"2025-04-11T19:05:34.480Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Invoices",
+			"item": [
+				{
+					"name": "Create Invoice",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"learner\": \"67f792c7338e633d391bfe0a\",\n    //   \"amount\": 500, // optional, the amount owed would be used if not provided\n    //   \"dueDate\": \"2025-05-01\", // Optional, 7 days from now will used if not provided\n    \"paystackCallbackUrl\": \"http://localhost:3000/payment\", // This is a url on your frontend where the learner will be redirected to after a suucessul or failed payment\n    \"paymentDetails\": \"Invoice for Full Stack Development course\" // optional\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/invoices",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"invoices"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Invoice",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"learner\": \"67f792c7338e633d391bfe0a\",\n    //   \"amount\": 500, // optional, the amount owed would be used if not provided\n    //   \"dueDate\": \"2025-05-01\", // Optional, 7 days from now will used if not provided\n    \"paystackCallbackUrl\": \"http://localhost:3000/payment\", // This is a url on your frontend where the learner will be redirected to after a suucessul or failed payment\n    \"paymentDetails\": \"Invoice for Full Stack Development course\" // optional\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/invoices",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"invoices"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1661"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"67d-pLnj596NX9wbgUIStmv/oR6yJv8\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 11 Apr 2025 22:21:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Invoice created successfully and email sent to learner\",\n    \"invoice\": {\n        \"_id\": \"67f995caa28c71410cc18b13\",\n        \"learner\": {\n            \"_id\": \"67f792c7338e633d391bfe0a\",\n            \"firstName\": \"Passum\",\n            \"lastName\": \"Tornado\",\n            \"email\": \"guevel@hearkn.com\",\n            \"role\": \"Learner\",\n            \"isVerified\": true,\n            \"verificationToken\": \"694939\",\n            \"verificationTokenExpiresAt\": \"2025-04-11T09:43:35.819Z\",\n            \"lastLogin\": \"2025-04-11T14:15:51.243Z\",\n            \"createdAt\": \"2025-04-10T09:43:35.907Z\",\n            \"updatedAt\": \"2025-04-11T14:16:54.389Z\",\n            \"__v\": 0,\n            \"contact\": \"+233241333224\",\n            \"description\": \"This is the decription about me\",\n            \"disabled\": false,\n            \"location\": \"Accra, Ghana\",\n            \"profileImage\": \"https://res.cloudinary.com/techbiznez/image/upload/v1744381013/profileImage-1744380996754-425588999_hmpvxl.jpg\"\n        },\n        \"track\": {\n            \"_id\": \"67f82d152d80247a28fcc2d0\",\n            \"admin\": \"67f79566338e633d391bfe0d\",\n            \"name\": \"Cloud Computing Expertise Testing\",\n            \"price\": 350,\n            \"instructor\": \"John Doe\",\n            \"duration\": \"12 weeks\",\n            \"image\": \"https://res.cloudinary.com/techbiznez/image/upload/v1744331817/image-1744331798780-811237315_gnnbc7.jpg\",\n            \"description\": \"Unlock your potential with comprehensive training in modern software development.Become a Full-Stack Web Developer with a single comprehensive course coveringHTML, CSS, JavaScript, Node, React, PostgreSQL, Web3, and DApps.\",\n            \"createdAt\": \"2025-04-10T20:41:57.699Z\",\n            \"updatedAt\": \"2025-04-11T00:36:58.408Z\",\n            \"__v\": 0,\n            \"id\": \"67f82d152d80247a28fcc2d0\"\n        },\n        \"amount\": 100,\n        \"status\": \"pending\",\n        \"dueDate\": \"2025-04-18T22:20:42.185Z\",\n        \"paymentLink\": \"https://checkout.paystack.com/tpbz7t2prv1s3i1\",\n        \"paymentDetails\": \"Invoice for Full Stack Development course\",\n        \"createdAt\": \"2025-04-11T22:20:58.760Z\",\n        \"updatedAt\": \"2025-04-11T22:20:58.760Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"abdulgaffar.abuabakar@ntm.se\",\n    \"password\":\"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://tmp-se-project.azurewebsites.net/api/invoices/id=?=",
+							"protocol": "https",
+							"host": [
+								"tmp-se-project",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"invoices",
+								"id="
+							],
+							"query": [
+								{
+									"key": "",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Invoice",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/invoices/67f9259a25cce05e8809a074",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"invoices",
+								"67f9259a25cce05e8809a074"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Single Invoice",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/invoices/67f9259a25cce05e8809a074",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"invoices",
+										"67f9259a25cce05e8809a074"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1578"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"62a-AcL/olKQB9yM6TOil6O7eTbu2dM\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 11 Apr 2025 19:56:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"invoice\": {\n        \"_id\": \"67f9259a25cce05e8809a074\",\n        \"learner\": {\n            \"_id\": \"67f792c7338e633d391bfe0a\",\n            \"firstName\": \"Passum\",\n            \"lastName\": \"Tornado\",\n            \"email\": \"spprofi@adminzoom.com\",\n            \"role\": \"Learner\",\n            \"isVerified\": true,\n            \"verificationToken\": \"694939\",\n            \"verificationTokenExpiresAt\": \"2025-04-11T09:43:35.819Z\",\n            \"lastLogin\": \"2025-04-11T14:15:51.243Z\",\n            \"createdAt\": \"2025-04-10T09:43:35.907Z\",\n            \"updatedAt\": \"2025-04-11T14:16:54.389Z\",\n            \"__v\": 0,\n            \"contact\": \"+233241333224\",\n            \"description\": \"This is the decription about me\",\n            \"disabled\": false,\n            \"location\": \"Accra, Ghana\",\n            \"profileImage\": \"https://res.cloudinary.com/techbiznez/image/upload/v1744381013/profileImage-1744380996754-425588999_hmpvxl.jpg\"\n        },\n        \"track\": {\n            \"_id\": \"67f82d152d80247a28fcc2d0\",\n            \"admin\": \"67f79566338e633d391bfe0d\",\n            \"name\": \"Cloud Computing Expertise Testing\",\n            \"price\": 350,\n            \"instructor\": \"John Doe\",\n            \"duration\": \"12 weeks\",\n            \"image\": \"https://res.cloudinary.com/techbiznez/image/upload/v1744331817/image-1744331798780-811237315_gnnbc7.jpg\",\n            \"description\": \"Unlock your potential with comprehensive training in modern software development.Become a Full-Stack Web Developer with a single comprehensive course coveringHTML, CSS, JavaScript, Node, React, PostgreSQL, Web3, and DApps.\",\n            \"createdAt\": \"2025-04-10T20:41:57.699Z\",\n            \"updatedAt\": \"2025-04-11T00:36:58.408Z\",\n            \"__v\": 0,\n            \"id\": \"67f82d152d80247a28fcc2d0\"\n        },\n        \"amount\": 250,\n        \"status\": \"paid\",\n        \"dueDate\": \"2025-04-18T14:21:56.533Z\",\n        \"paystackReference\": \"9550vmjchs\",\n        \"createdAt\": \"2025-04-11T14:22:18.535Z\",\n        \"updatedAt\": \"2025-04-11T15:09:48.546Z\",\n        \"__v\": 0,\n        \"paidAt\": \"2025-04-11T15:09:47.000Z\",\n        \"paystackTransactionId\": \"4864252237\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Invoices",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/invoices",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"invoices"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Invoices",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/invoices",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"invoices"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1591"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"637-62npFpYNvb7nlJfkkgWRMy3LmOQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 11 Apr 2025 19:48:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"count\": 1,\n    \"invoices\": [\n        {\n            \"_id\": \"67f9259a25cce05e8809a074\",\n            \"learner\": {\n                \"_id\": \"67f792c7338e633d391bfe0a\",\n                \"firstName\": \"Passum\",\n                \"lastName\": \"Tornado\",\n                \"email\": \"spprofi@adminzoom.com\",\n                \"role\": \"Learner\",\n                \"isVerified\": true,\n                \"verificationToken\": \"694939\",\n                \"verificationTokenExpiresAt\": \"2025-04-11T09:43:35.819Z\",\n                \"lastLogin\": \"2025-04-11T14:15:51.243Z\",\n                \"createdAt\": \"2025-04-10T09:43:35.907Z\",\n                \"updatedAt\": \"2025-04-11T14:16:54.389Z\",\n                \"__v\": 0,\n                \"contact\": \"+233241333224\",\n                \"description\": \"This is the decription about me\",\n                \"disabled\": false,\n                \"location\": \"Accra, Ghana\",\n                \"profileImage\": \"https://res.cloudinary.com/techbiznez/image/upload/v1744381013/profileImage-1744380996754-425588999_hmpvxl.jpg\"\n            },\n            \"track\": {\n                \"_id\": \"67f82d152d80247a28fcc2d0\",\n                \"admin\": \"67f79566338e633d391bfe0d\",\n                \"name\": \"Cloud Computing Expertise Testing\",\n                \"price\": 350,\n                \"instructor\": \"John Doe\",\n                \"duration\": \"12 weeks\",\n                \"image\": \"https://res.cloudinary.com/techbiznez/image/upload/v1744331817/image-1744331798780-811237315_gnnbc7.jpg\",\n                \"description\": \"Unlock your potential with comprehensive training in modern software development.Become a Full-Stack Web Developer with a single comprehensive course coveringHTML, CSS, JavaScript, Node, React, PostgreSQL, Web3, and DApps.\",\n                \"createdAt\": \"2025-04-10T20:41:57.699Z\",\n                \"updatedAt\": \"2025-04-11T00:36:58.408Z\",\n                \"__v\": 0,\n                \"id\": \"67f82d152d80247a28fcc2d0\"\n            },\n            \"amount\": 250,\n            \"status\": \"paid\",\n            \"dueDate\": \"2025-04-18T14:21:56.533Z\",\n            \"paystackReference\": \"9550vmjchs\",\n            \"createdAt\": \"2025-04-11T14:22:18.535Z\",\n            \"updatedAt\": \"2025-04-11T15:09:48.546Z\",\n            \"__v\": 0,\n            \"paidAt\": \"2025-04-11T15:09:47.000Z\",\n            \"paystackTransactionId\": \"4864252237\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Track Enrollments",
+			"item": [
+				{
+					"name": "Enroll To a track (by learner)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"track\": \"67f82d152d80247a28fcc2d0\",\n    \"amount\": 250, // optional. Add amount for partial payment\n    \"paystackCallbackUrl\": \"http://localhost:3000/payment\" // This is a url on your frontend where the learner will be redirected to after a suucessul or failed payment\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/enrollments",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"enrollments"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Enroll To a course",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"track\": \"67f82d152d80247a28fcc2d0\",\n    \"amount\": 250, // optional. Add amount for partial payment\n    \"paystackCallbackUrl\": \"http://localhost:3000/payment\" // This is a url on your frontend where the learner will be redirected to after a suucessul or failed payment\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/enrollments",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"enrollments"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "435"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1b3-Ir9ARpZszBD1ir45yRVO2lGOrc8\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 11 Apr 2025 15:09:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Transaction initialized successfully\",\n    \"transactionUrl\": \"https://checkout.paystack.com/1gq3k68nxr4ukdv\",\n    \"invoice\": {\n        \"_id\": \"67f9259a25cce05e8809a074\",\n        \"learner\": \"67f792c7338e633d391bfe0a\",\n        \"track\": \"67f82d152d80247a28fcc2d0\",\n        \"amount\": 250,\n        \"status\": \"pending\",\n        \"dueDate\": \"2025-04-18T14:21:56.533Z\",\n        \"paystackReference\": \"9550vmjchs\",\n        \"createdAt\": \"2025-04-11T14:22:18.535Z\",\n        \"updatedAt\": \"2025-04-11T15:09:01.889Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get enrollments",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"courseId\": \"67e7fd04191853e356efd63d\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/enrollments",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"enrollments"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Course Registration",
+			"item": [
+				{
+					"name": "Enroll To a track (by learner)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"course\": \"67f85311a3761b766ecff63e\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/registrations",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"registrations"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Enroll To a track (by learner)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"track\": \"67f82d152d80247a28fcc2d0\",\n    \"amount\": 250, // optional. Add amount for partial payment\n    \"paystackCallbackUrl\": \"http://localhost:3000/payment\" // This is a url on your frontend where the learner will be redirected to after a suucessul or failed payment\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/enrollments",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"enrollments"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "435"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1b3-Ir9ARpZszBD1ir45yRVO2lGOrc8\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 11 Apr 2025 15:09:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": \"Transaction initialized successfully\",\n    \"transactionUrl\": \"https://checkout.paystack.com/1gq3k68nxr4ukdv\",\n    \"invoice\": {\n        \"_id\": \"67f9259a25cce05e8809a074\",\n        \"learner\": \"67f792c7338e633d391bfe0a\",\n        \"track\": \"67f82d152d80247a28fcc2d0\",\n        \"amount\": 250,\n        \"status\": \"pending\",\n        \"dueDate\": \"2025-04-18T14:21:56.533Z\",\n        \"paystackReference\": \"9550vmjchs\",\n        \"createdAt\": \"2025-04-11T14:22:18.535Z\",\n        \"updatedAt\": \"2025-04-11T15:09:01.889Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get course registrations",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"courseId\": \"67e7fd04191853e356efd63d\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/registrations",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"registrations"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get course registrations",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"courseId\": \"67e7fd04191853e356efd63d\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/registrations",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"registrations"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "627"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"273-A8P980+sTdT5g+LtGhA+g04m434\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 11 Apr 2025 16:23:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"count\": 1,\n    \"registrations\": [\n        {\n            \"_id\": \"67f93fc1e59bed8a1ac6c87a\",\n            \"learner\": \"67f792c7338e633d391bfe0a\",\n            \"course\": {\n                \"_id\": \"67f85311a3761b766ecff63e\",\n                \"admin\": \"67f79566338e633d391bfe0d\",\n                \"track\": \"67f82d152d80247a28fcc2d0\",\n                \"title\": \"AWS Cloud Practional Here\",\n                \"stacks\": [\n                    \"s3\",\n                    \"ec2\",\n                    \"Cloudfront\",\n                    \"EKS\"\n                ],\n                \"image\": \"https://res.cloudinary.com/techbiznez/image/upload/v1744327439/image-1744327422641-727399288_aroigb.jpg\",\n                \"createdAt\": \"2025-04-10T23:24:01.279Z\",\n                \"updatedAt\": \"2025-04-11T11:25:37.252Z\",\n                \"__v\": 0\n            },\n            \"date\": \"2025-04-11T16:13:53.776Z\",\n            \"createdAt\": \"2025-04-11T16:13:53.798Z\",\n            \"updatedAt\": \"2025-04-11T16:13:53.798Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
