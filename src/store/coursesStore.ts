@@ -178,11 +178,19 @@ export const useCoursesStore = create<CoursesState>((set, get) => ({
     try {
       const response = await fetch(`/api/courses/${id}`, {
         method: "PUT",
+        headers: getFormDataAuthHeaders(),
         body: courseData,
       });
 
       if (!response.ok) {
         const errorData = await response.json();
+        
+        // Handle token expiration
+        if (response.status === 401) {
+          useAuthStore.getState().logout();
+          throw new Error("Your session has expired. Please log in again.");
+        }
+        
         throw new Error(errorData.error || "Failed to update course");
       }
 
@@ -213,13 +221,18 @@ export const useCoursesStore = create<CoursesState>((set, get) => ({
     try {
       const response = await fetch(`/api/courses/${id}`, {
         method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: getAuthHeaders(),
       });
 
       if (!response.ok) {
         const errorData = await response.json();
+        
+        // Handle token expiration
+        if (response.status === 401) {
+          useAuthStore.getState().logout();
+          throw new Error("Your session has expired. Please log in again.");
+        }
+        
         throw new Error(errorData.error || "Failed to delete course");
       }
 

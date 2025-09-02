@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { handleApiError, checkBackendUrl } from "@/lib/errorHandler";
-import axios from "axios";
+import { handleApiError, checkBackendUrl, getAuthToken, createAuthHeaders } from "@/lib/errorHandler";
+import { handleFormDataRequest } from "@/lib/formData";
 
 export const GET = async (
   req: NextRequest,
@@ -10,15 +10,14 @@ export const GET = async (
     const urlCheck = checkBackendUrl();
     if (urlCheck) return urlCheck;
 
+    const token = getAuthToken(req);
     const { id } = await params;
     const apiUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/tracks/${id}`;
     console.log("Get single track request to:", apiUrl);
     
     const response = await fetch(apiUrl, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: createAuthHeaders(token),
     });
 
     if (!response.ok) {
@@ -42,19 +41,19 @@ export const PUT = async (
     const urlCheck = checkBackendUrl();
     if (urlCheck) return urlCheck;
 
+    const token = getAuthToken(req);
     const { id } = await params;
-    const body = await req.json();
+    const formData = await req.formData();
     const apiUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/tracks/${id}`;
     
     console.log("Update track request to:", apiUrl);
-    console.log("Request body:", body);
 
-    const response = await axios.put(
+    const additionalHeaders: Record<string, string> = token ? { 'Authorization': `Bearer ${token}` } : {};
+    const response = await handleFormDataRequest(
       apiUrl,
-      body,
-      {
-        headers: { "Content-Type": "application/json" },
-      }
+      Object.fromEntries(formData.entries()),
+      'PUT',
+      additionalHeaders
     );
     
     console.log("Update track response data:", response.data);
@@ -73,15 +72,14 @@ export const DELETE = async (
     const urlCheck = checkBackendUrl();
     if (urlCheck) return urlCheck;
 
+    const token = getAuthToken(req);
     const { id } = await params;
     const apiUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/tracks/${id}`;
     console.log("Delete track request to:", apiUrl);
     
     const response = await fetch(apiUrl, {
       method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: createAuthHeaders(token),
     });
 
     if (!response.ok) {

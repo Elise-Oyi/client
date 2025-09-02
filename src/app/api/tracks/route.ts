@@ -44,7 +44,7 @@ export const POST = async (req: NextRequest) => {
       additionalHeaders
     );
 
-    return NextResponse.json(response);
+    return NextResponse.json(response.data);
   } catch (error: unknown) {
     return handleApiError(error, "Failed to create track");
   }

@@ -5,6 +5,7 @@ import Search from "@/components/search/Search";
 import { Plus, Trash2, ChevronLeft, ChevronRight, Pencil } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { useCoursesStore } from "@/store/coursesStore";
+import { useTracksStore } from "@/store/tracksStore";
 import toast from "react-hot-toast";
 
 type Course = {
@@ -59,12 +60,23 @@ export default function CoursesPage() {
     clearError
   } = useCoursesStore();
 
-  // Fetch courses on component mount
+  // Get tracks data and functions from store
+  const {
+    tracks,
+    fetchTracks,
+    loading: tracksLoading,
+    error: tracksError
+  } = useTracksStore();
+
+  // Fetch courses and tracks on component mount
   useEffect(() => {
     fetchCourses().catch((err) => {
       console.error("Failed to fetch courses:", err.message || "Unknown error");
     });
-  }, [fetchCourses]);
+    fetchTracks().catch((err) => {
+      console.error("Failed to fetch tracks:", err.message || "Unknown error");
+    });
+  }, [fetchCourses, fetchTracks]);
 
   // Show error notifications
   useEffect(() => {
@@ -72,18 +84,66 @@ export default function CoursesPage() {
       toast.error(typeof error === 'string' ? error : 'An error occurred');
       clearError();
     }
-  }, [error, clearError]);
+    if (tracksError) {
+      toast.error(typeof tracksError === 'string' ? tracksError : 'Failed to load tracks');
+    }
+  }, [error, tracksError, clearError]);
 
-  const availableTracks = [
-    { label: "Software Engineering", value: "Software Engineering" },
-    { label: "Cloud Computing", value: "Cloud Computing" },
-    { label: "Data Science", value: "Data Science" },
-    { label: "UI/UX Design", value: "UI/UX Design" },
-  ];
+  // Convert tracks from store to options format
+  const availableTracks = tracks.map(track => ({
+    label: track.name || track.title || 'Untitled Track',
+    value: track._id
+  }));
+
+  // Function to get appropriate course icon based on course/track name
+  const getCourseIcon = (course: Course) => {
+    const courseTitle = (course?.name || course?.title || '').toLowerCase();
+    const trackName = (course?.track?.name || '').toLowerCase();
+    
+    // Check course title first, then track name
+    const searchText = `${courseTitle} ${trackName}`.toLowerCase();
+    
+    if (searchText.includes('data') || searchText.includes('analytics') || searchText.includes('science')) {
+      return '📊'; // Data/Analytics
+    }
+    if (searchText.includes('cloud') || searchText.includes('aws') || searchText.includes('azure')) {
+      return '☁️'; // Cloud
+    }
+    if (searchText.includes('machine') || searchText.includes('ai') || searchText.includes('ml')) {
+      return '🤖'; // Machine Learning/AI
+    }
+    if (searchText.includes('web') || searchText.includes('frontend') || searchText.includes('react')) {
+      return '🌐'; // Web Development
+    }
+    if (searchText.includes('mobile') || searchText.includes('app')) {
+      return '📱'; // Mobile Development
+    }
+    if (searchText.includes('design') || searchText.includes('ui') || searchText.includes('ux')) {
+      return '🎨'; // Design
+    }
+    if (searchText.includes('security') || searchText.includes('cyber')) {
+      return '🔒'; // Security
+    }
+    if (searchText.includes('devops') || searchText.includes('deployment')) {
+      return '⚙️'; // DevOps
+    }
+    if (searchText.includes('database') || searchText.includes('sql')) {
+      return '🗄️'; // Database
+    }
+    if (searchText.includes('project') || searchText.includes('management')) {
+      return '📋'; // Project Management
+    }
+    if (searchText.includes('engineering') || searchText.includes('software')) {
+      return '💻'; // Software Engineering
+    }
+    
+    // Default fallback
+    return '📚';
+  };
 
   const fields: Field[] = [
     {
-      name: "name",
+      name: "title",
       label: "Title",
       type: "text",
       placeholder: "",
@@ -97,9 +157,10 @@ export default function CoursesPage() {
     },
     {
       name: "picture",
-      label: "Picture",
+      label: "Picture", 
       type: "file",
       placeholder: "",
+      required: true,
     },
     {
       name: "description",
@@ -121,13 +182,13 @@ export default function CoursesPage() {
   async function handleFormSubmit(data: Record<string, string>) {
     try {
       const formData = new FormData();
-      formData.append('name', data.name);
+      formData.append('title', data.title);
       formData.append('track', data.track);
       formData.append('description', data.description);
       
       // Handle file upload
-      if (data.picture && typeof data.picture === 'object' && 'name' in data.picture) {
-        formData.append('image', data.picture as File);
+      if (data.picture && (data.picture as any) instanceof FileList && (data.picture as any).length > 0) {
+        formData.append('image', (data.picture as any)[0]);
       }
 
       const loadingToast = toast.loading("Creating course...");
@@ -153,13 +214,13 @@ export default function CoursesPage() {
     
     try {
       const formData = new FormData();
-      formData.append('name', data.name);
+      formData.append('title', data.title);
       formData.append('track', data.track);
       formData.append('description', data.description);
       
       // Handle file upload
-      if (data.picture && typeof data.picture === 'object' && 'name' in data.picture) {
-        formData.append('image', data.picture as File);
+      if (data.picture && (data.picture as any) instanceof FileList && (data.picture as any).length > 0) {
+        formData.append('image', (data.picture as any)[0]);
       }
 
       const loadingToast = toast.loading("Updating course...");
@@ -264,8 +325,25 @@ export default function CoursesPage() {
             >
               {/* Course Name with Icon */}
               <div className="col-span-4 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
-                  <span className="text-lg">📚</span>
+                <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center overflow-hidden">
+                  {course?.image ? (
+                    <img 
+                      src={course.image} 
+                      alt={course?.name || course?.title || 'Course'} 
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        // If image fails to load, show emoji fallback
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const parent = target.parentElement;
+                        if (parent) {
+                          parent.innerHTML = `<span class="text-lg">${getCourseIcon(course)}</span>`;
+                        }
+                      }}
+                    />
+                  ) : (
+                    <span className="text-lg">{getCourseIcon(course)}</span>
+                  )}
                 </div>
                 <span className="font-medium text-gray-900">{course?.name || course?.title || 'Untitled Course'}</span>
               </div>
@@ -374,8 +452,8 @@ export default function CoursesPage() {
               title="Update Course"
               fields={fields}
               defaultValues={{
-                name: editingCourse?.name || editingCourse?.title || "",
-                track: editingCourse?.track?.name || "",
+                title: editingCourse?.name || editingCourse?.title || "",
+                track: editingCourse?.track?._id || "",
                 description: editingCourse?.description || ""
               }}
               onSubmit={handleEditFormSubmit}

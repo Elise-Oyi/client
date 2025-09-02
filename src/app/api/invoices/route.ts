@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { handleApiError, checkBackendUrl } from "@/lib/errorHandler";
+import { handleApiError, checkBackendUrl, getAuthToken, createAuthHeaders } from "@/lib/errorHandler";
 import axios from "axios";
 
 export const GET = async (req: NextRequest) => {
@@ -7,14 +7,13 @@ export const GET = async (req: NextRequest) => {
     const urlCheck = checkBackendUrl();
     if (urlCheck) return urlCheck;
 
+    const token = getAuthToken(req);
     const apiUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/invoices`;
     console.log("Get invoices request to:", apiUrl);
     
     const response = await fetch(apiUrl, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: createAuthHeaders(token),
     });
 
     if (!response.ok) {
@@ -35,6 +34,7 @@ export const POST = async (req: NextRequest) => {
     const urlCheck = checkBackendUrl();
     if (urlCheck) return urlCheck;
 
+    const token = getAuthToken(req);
     const body = await req.json();
     const apiUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/invoices`;
     
@@ -45,7 +45,10 @@ export const POST = async (req: NextRequest) => {
       apiUrl,
       body,
       {
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          ...(token && { "Authorization": `Bearer ${token}` })
+        },
       }
     );
     

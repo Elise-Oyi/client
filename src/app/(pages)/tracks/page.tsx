@@ -73,6 +73,7 @@ export default function TracksPage() {
       label: "Picture",
       type: "file",
       placeholder: "",
+      required: true,
     },
     {
       name: "description",
@@ -98,18 +99,18 @@ export default function TracksPage() {
     }
   };
 
-  async function handleFormSubmit(data: Record<string, string>) {
+  async function handleFormSubmit(data: Record<string, any>) {
     try {
       const formData = new FormData();
-      formData.append('title', data.title || '');
+      formData.append('name', data.title || '');
       formData.append('price', data.price || '');
       formData.append('duration', data.duration || '');
       formData.append('instructor', data.instructor || '');
       formData.append('description', data.description || '');
 
       // Handle file upload
-      if (typeof data.picture === 'object' && 'name' in data.picture) {
-        formData.append('picture', data.picture as File);
+      if (data.picture && data.picture[0]) {
+        formData.append('image', data.picture[0]);
       }
 
       const loadingToast = toast.loading("Creating track...");
@@ -169,10 +170,10 @@ export default function TracksPage() {
                   {tracks.map((track, index) => (
                     <TracksCard
                       key={track._id || index}
-                      title={track?.title || track?.name}
+                      title={track?.title || track?.name || 'Untitled Track'}
                       price={track?.price ? `$${track.price}` : (track?.value || 'N/A')}
                       description={track?.description}
-                      duration={track?.duration}
+                      duration={track?.duration || 'Duration not specified'}
                       category={track?.category || []}
                       image={track?.image || '/tracks/track1.svg'}
                       teacher={track?.instructor || 'N/A'}

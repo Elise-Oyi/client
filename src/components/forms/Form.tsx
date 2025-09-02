@@ -30,14 +30,14 @@ type AuthFormProps = {
   title: string;
   description?: string;
   fields: Field[];
-  onSubmit: (data: Record<string, string>) => Promise<void>;
+  onSubmit: (data: Record<string, any>) => Promise<void>;
   loadingMessage?: string;
   successMessage?: string;
   errorMessage?: string;
   buttonLabel?: string;
   footer?: React.ReactNode;
   onClose?: () => void;
-  defaultValues?: Record<string, string>;
+  defaultValues?: Record<string, any>;
 };
 
 export default function AuthForm({
@@ -57,13 +57,13 @@ export default function AuthForm({
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Record<string, string>>({
+  } = useForm<Record<string, any>>({
     defaultValues,
   });
 
   const [loading, setLoading] = useState(false);
 
-  const handleFormSubmit: SubmitHandler<Record<string, string>> = async (
+  const handleFormSubmit: SubmitHandler<Record<string, any>> = async (
     data
   ) => {
     const toastId = toast.loading(loadingMessage);

@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { useAuthStore } from "./authStore";
 
 type Invoice = {
   _id: string;
@@ -56,6 +57,14 @@ type InvoicesState = {
   clearError: () => void;
 };
 
+const getAuthHeaders = () => {
+  const token = useAuthStore.getState().token;
+  return {
+    "Content-Type": "application/json",
+    ...(token && { "Authorization": `Bearer ${token}` })
+  };
+};
+
 export const useInvoicesStore = create<InvoicesState>((set, get) => ({
   invoices: [],
   currentInvoice: null,
@@ -70,13 +79,18 @@ export const useInvoicesStore = create<InvoicesState>((set, get) => ({
     try {
       const response = await fetch("/api/invoices", {
         method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: getAuthHeaders(),
       });
 
       if (!response.ok) {
         const errorData = await response.json();
+        
+        // Handle token expiration
+        if (response.status === 401) {
+          useAuthStore.getState().logout();
+          throw new Error("Your session has expired. Please log in again.");
+        }
+        
         throw new Error(errorData.error || "Failed to fetch invoices");
       }
 
@@ -105,13 +119,18 @@ export const useInvoicesStore = create<InvoicesState>((set, get) => ({
     try {
       const response = await fetch(`/api/invoices/${id}`, {
         method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: getAuthHeaders(),
       });
 
       if (!response.ok) {
         const errorData = await response.json();
+        
+        // Handle token expiration
+        if (response.status === 401) {
+          useAuthStore.getState().logout();
+          throw new Error("Your session has expired. Please log in again.");
+        }
+        
         throw new Error(errorData.error || "Failed to fetch invoice");
       }
 
@@ -135,14 +154,19 @@ export const useInvoicesStore = create<InvoicesState>((set, get) => ({
     try {
       const response = await fetch("/api/invoices", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: getAuthHeaders(),
         body: JSON.stringify(invoiceData),
       });
 
       if (!response.ok) {
         const errorData = await response.json();
+        
+        // Handle token expiration
+        if (response.status === 401) {
+          useAuthStore.getState().logout();
+          throw new Error("Your session has expired. Please log in again.");
+        }
+        
         throw new Error(errorData.error || "Failed to create invoice");
       }
 
@@ -173,14 +197,19 @@ export const useInvoicesStore = create<InvoicesState>((set, get) => ({
     try {
       const response = await fetch(`/api/invoices/${id}`, {
         method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: getAuthHeaders(),
         body: JSON.stringify(invoiceData),
       });
 
       if (!response.ok) {
         const errorData = await response.json();
+        
+        // Handle token expiration
+        if (response.status === 401) {
+          useAuthStore.getState().logout();
+          throw new Error("Your session has expired. Please log in again.");
+        }
+        
         throw new Error(errorData.error || "Failed to update invoice");
       }
 
@@ -214,13 +243,18 @@ export const useInvoicesStore = create<InvoicesState>((set, get) => ({
     try {
       const response = await fetch(`/api/invoices/${id}`, {
         method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: getAuthHeaders(),
       });
 
       if (!response.ok) {
         const errorData = await response.json();
+        
+        // Handle token expiration
+        if (response.status === 401) {
+          useAuthStore.getState().logout();
+          throw new Error("Your session has expired. Please log in again.");
+        }
+        
         throw new Error(errorData.error || "Failed to delete invoice");
       }
 

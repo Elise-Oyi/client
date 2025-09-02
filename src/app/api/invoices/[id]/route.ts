@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { handleApiError, checkBackendUrl } from "@/lib/errorHandler";
+import { handleApiError, checkBackendUrl, getAuthToken, createAuthHeaders } from "@/lib/errorHandler";
 import axios from "axios";
 
 export const GET = async (
@@ -11,14 +11,13 @@ export const GET = async (
     if (urlCheck) return urlCheck;
 
     const { id } = await params;
+    const token = getAuthToken(req);
     const apiUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/invoices/${id}`;
     console.log("Get single invoice request to:", apiUrl);
     
     const response = await fetch(apiUrl, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: createAuthHeaders(token),
     });
 
     if (!response.ok) {
@@ -43,6 +42,7 @@ export const PUT = async (
     if (urlCheck) return urlCheck;
 
     const { id } = await params;
+    const token = getAuthToken(req);
     const body = await req.json();
     const apiUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/invoices/${id}`;
     
@@ -53,7 +53,10 @@ export const PUT = async (
       apiUrl,
       body,
       {
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          ...(token && { "Authorization": `Bearer ${token}` })
+        },
       }
     );
     
@@ -74,14 +77,13 @@ export const DELETE = async (
     if (urlCheck) return urlCheck;
 
     const { id } = await params;
+    const token = getAuthToken(req);
     const apiUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/invoices/${id}`;
     console.log("Delete invoice request to:", apiUrl);
     
     const response = await fetch(apiUrl, {
       method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: createAuthHeaders(token),
     });
 
     if (!response.ok) {

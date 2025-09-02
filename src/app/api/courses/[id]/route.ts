@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { handleApiError, checkBackendUrl } from "@/lib/errorHandler";
+import { handleApiError, checkBackendUrl, getAuthToken } from "@/lib/errorHandler";
 import { handleFormDataRequest, extractFormData } from "@/lib/formData";
 
 export const GET = async (
@@ -41,11 +41,17 @@ export const PUT = async (
     if (urlCheck) return urlCheck;
 
     const { id } = await params;
+    const token = getAuthToken(req);
     const formData = await extractFormData(req);
     const apiUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/courses/${id}`;
     
+    // Create auth headers for FormData request
+    const authHeaders: Record<string, string> = {};
+    if (token) {
+      authHeaders['Authorization'] = `Bearer ${token}`;
+    }
 
-    const response = await handleFormDataRequest(apiUrl, formData, 'PUT');
+    const response = await handleFormDataRequest(apiUrl, formData, 'PUT', authHeaders);
     
 
     return NextResponse.json(response.data);
@@ -63,12 +69,14 @@ export const DELETE = async (
     if (urlCheck) return urlCheck;
 
     const { id } = await params;
+    const token = getAuthToken(req);
     const apiUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/courses/${id}`;
     
     const response = await fetch(apiUrl, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
+        ...(token && { 'Authorization': `Bearer ${token}` })
       },
     });
 
