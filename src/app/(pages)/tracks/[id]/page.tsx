@@ -153,7 +153,7 @@ function TracksCard() {
     setShowModal(true);
   }
 
-  async function handleDeleteTrack(): void {
+  async function handleDeleteTrack(): Promise<void> {
     if (window.confirm("Are you sure you want to delete this track?")) {
       try {
         const loadingToast = toast.loading("Deleting track...");

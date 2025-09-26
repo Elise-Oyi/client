@@ -11,23 +11,21 @@ import toast from "react-hot-toast";
 
 type Invoice = {
   _id: string;
-  learner?: {
-    _id: string;
-    firstName: string;
-    lastName: string;
-    email: string;
-    profileImage?: string;
-  };
-  track?: {
-    _id: string;
-    name: string;
-  };
+  invoiceNumber: string;
+  learnerId?: string;
+  learnerName?: string;
+  learnerEmail?: string;
+  trackId?: string;
+  trackName?: string;
   amount: number;
-  status: "pending" | "paid" | "cancelled" | "overdue" | "failed";
+  currency?: string;
+  status: "pending" | "paid" | "cancelled" | "overdue";
   dueDate?: string;
-  paidAt?: string;
+  paidDate?: string;
+  paymentMethod?: string;
+  description?: string;
   createdAt?: string;
-  paymentDetails?: string;
+  updatedAt?: string;
 };
 
 export default function InvoicesPage() {
@@ -338,32 +336,16 @@ export default function InvoicesPage() {
                   {/* Customer Name with Avatar */}
                   <div className="col-span-3 flex items-center gap-3">
                     <div className={`w-10 h-10 rounded-full ${statusDisplay.bg} flex items-center justify-center overflow-hidden`}>
-                      {invoice?.learner?.profileImage ? (
-                        <img 
-                          src={invoice.learner.profileImage} 
-                          alt={`${invoice.learner?.firstName} ${invoice.learner?.lastName}`} 
-                          className="w-full h-full object-cover"
-                          onError={(e) => {
-                            const target = e.target as HTMLImageElement;
-                            target.style.display = 'none';
-                            const parent = target.parentElement;
-                            if (parent) {
-                              parent.innerHTML = `<span class="text-lg">${statusDisplay.icon}</span>`;
-                            }
-                          }}
-                        />
-                      ) : (
-                        <span className="text-lg">{statusDisplay.icon}</span>
-                      )}
+                      <span className="text-lg">{statusDisplay.icon}</span>
                     </div>
                     <span className="font-medium text-gray-900">
-                      {invoice?.learner ? `${invoice.learner.firstName} ${invoice.learner.lastName}` : 'Unknown Customer'}
+                      {invoice?.learnerName || 'Unknown Customer'}
                     </span>
                   </div>
 
                   {/* Email */}
                   <div className="col-span-3 flex items-center">
-                    <span className="text-gray-600">{invoice?.learner?.email || 'N/A'}</span>
+                    <span className="text-gray-600">{invoice?.learnerEmail || 'N/A'}</span>
                   </div>
 
                   {/* Date */}
@@ -480,10 +462,10 @@ export default function InvoicesPage() {
               title="Update Invoice"
               fields={fields}
               defaultValues={{
-                learner: editingInvoice.learner?._id || "",
-                track: editingInvoice.track?._id || "",
+                learner: editingInvoice.learnerId || "",
+                track: editingInvoice.trackId || "",
                 amount: editingInvoice.amount?.toString() || "",
-                paymentDetails: editingInvoice.paymentDetails || ""
+                paymentDetails: editingInvoice.description || ""
               }}
               onSubmit={handleEditFormSubmit}
               buttonLabel="Update Invoice"
@@ -503,7 +485,7 @@ export default function InvoicesPage() {
           <div className="bg-white rounded-lg shadow-lg w-full max-w-md p-6">
             <h2 className="text-xl font-semibold text-gray-800 mb-4">Delete Invoice</h2>
             <p className="text-gray-600 mb-6">
-              Are you sure you want to delete the invoice for &ldquo;{deletingInvoice?.learner ? `${deletingInvoice.learner.firstName} ${deletingInvoice.learner.lastName}` : 'this customer'}&rdquo;? This action cannot be undone.
+              Are you sure you want to delete the invoice for &ldquo;{deletingInvoice?.learnerName || 'this customer'}&rdquo;? This action cannot be undone.
             </p>
             <div className="flex justify-end gap-3">
               <button

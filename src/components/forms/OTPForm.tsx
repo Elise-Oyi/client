@@ -98,7 +98,7 @@ export default function OTPForm({ email }: OTPFormProps) {
         </button>
 
         <div className="text-center text-gray-500 text-sm">
-          Didn't you receive the OTP?{" "}
+          Didn&apos;t you receive the OTP?{" "}
           <button
             type="button"
             onClick={handleResendOTP}

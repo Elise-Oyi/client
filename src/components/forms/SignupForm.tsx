@@ -50,9 +50,10 @@ export default function SignupForm() {
       toast.success("Account created successfully! Welcome!");
 
       router.push("/otp");
-    } catch (err: any) {
+    } catch (err: unknown) {
       toast.dismiss(loadingToast);
-      toast.error(err?.message || "Signup failed. Please try again.");
+      const errorMessage = err instanceof Error ? err.message : "Signup failed. Please try again.";
+      toast.error(errorMessage);
     } finally {
       setLoading(false);
     }

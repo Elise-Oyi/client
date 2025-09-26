@@ -36,7 +36,7 @@ export const POST = async (req: NextRequest) => {
     const formData = await req.formData();
     const apiUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/tracks`;
 
-    const additionalHeaders = token ? { 'Authorization': `Bearer ${token}` } : {};
+    const additionalHeaders = token ? { 'Authorization': `Bearer ${token}` } : undefined;
     const response = await handleFormDataRequest(
       apiUrl,
       Object.fromEntries(formData.entries()),

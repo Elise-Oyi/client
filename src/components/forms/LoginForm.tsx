@@ -35,9 +35,10 @@ export default function LoginForm() {
 
       // Navigate to dashboard
       router.push("/dashboard");
-    } catch (err: any) {
+    } catch (err: unknown) {
       toast.dismiss(loadingToast);
-      toast.error(err.message || "Login failed. Please try again.");
+      const errorMessage = err instanceof Error ? err.message : "Login failed. Please try again.";
+      toast.error(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -101,7 +102,7 @@ export default function LoginForm() {
       </button>
 
       <div className="text-center text-gray-500">
-        Don’t have an account?{" "}
+        Don&apos;t have an account?{" "}
         <a href="/signup" className="text-blue-600 hover:underline">
           Signup
         </a>
